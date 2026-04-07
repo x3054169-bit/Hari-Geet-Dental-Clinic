@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", sans-serif;
+
+  --color-brand-bg: #f8f9fa;
+  --color-brand-accent: #a5f3fc;
+  --color-brand-primary: #000000;
+  --color-brand-dark: #1a1a1a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply font-sans text-brand-dark bg-brand-bg overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-extrabold tracking-tighter;
+  }
+
+  /* Hide scrollbar only on mobile */
+  @media (max-width: 768px) {
+    html, body {
+      -ms-overflow-style: none;  /* Edge */
+      scrollbar-width: none;     /* Firefox */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+  }
+}
+
+.btn-black {
+  @apply px-6 py-3 bg-brand-primary text-white rounded-full font-semibold transition-all hover:bg-brand-dark active:scale-95 flex items-center justify-center gap-2;
+}
+
+.btn-accent {
+  @apply px-6 py-3 bg-brand-accent text-brand-primary rounded-full font-semibold transition-all hover:brightness-95 active:scale-95 flex items-center justify-center gap-2;
+}
+
+.card-rounded {
+  @apply rounded-[2.5rem] md:rounded-[3rem];
+}
+
+.section-padding {
+  @apply py-16 md:py-32 px-6;
+}
