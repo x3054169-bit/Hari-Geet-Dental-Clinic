@@ -8,6 +8,28 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof Lenis !== 'undefined') {
+          const lenis = new Lenis({
+            duration: 1.2,
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            lerp: 0.1
+          });
+
+          function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          }
+
+          requestAnimationFrame(raf);
+        } else {
+          console.error('Lenis failed to load from CDN');
+        }
+      });
+    </script>
   </body>
 </html>
 
